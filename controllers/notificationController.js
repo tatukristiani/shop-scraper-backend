@@ -40,12 +40,13 @@ const updateNotification = async (req, res) => {
         })
 }
 
-// TODO: Add get method for a single user (by email)
 const getNotifications = async (req, res) => {
+    const query = req.query;
+    const email = query.email;
 
-    Notification.find()
+    Notification.find({ email: email })
         .then(notifications => {
-            res.send(notifications);
+            res.status(200).send(notifications);
         })
         .catch(err => {
             res.status(500).send({ message: err.message });

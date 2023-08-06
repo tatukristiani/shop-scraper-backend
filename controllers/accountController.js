@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const EmailSender = require("../utility/EmailSender");
 const JWT = require("../utility/JwtToken");
 
-//TODO: Check if user already exists, yes: Send info about the email already being used
 const createUser = async (req, res) => {
 
     const email = req.body.email;
@@ -31,7 +30,7 @@ const createUser = async (req, res) => {
 }
 
 
-// TODO: Make code more clean
+
 const loginUser = async (req, res) => {
 
     const email = req.body.email;

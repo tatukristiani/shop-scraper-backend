@@ -1,7 +1,6 @@
 var jwt = require('jwt-simple');
 const User = require("../model/User");
 
-// TODO: Confirm that this is working
 async function CreateJwtToken(payload) {
     const id = payload.id;
     const email = payload.email;
