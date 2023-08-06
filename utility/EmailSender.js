@@ -74,7 +74,7 @@ function constructNotificationEmailSubject(productData) {
 function constructNotificationEmailBody(productData) {
     let productDataStrings = "";
     for (let i = 0; i < productData.length; i++) {
-        let string = productDataStrings.concat(`<br><img src="${productData[i].image}" /><a href="${productData[i].link}">${productData[i].title}</a><br>`);
+        let string = productDataStrings.concat(`<br><img src="${productData[i].image}" /><br/><a href="${productData[i].link}">${productData[i].title}</a><br>`);
         productDataStrings = string;
     }
 
