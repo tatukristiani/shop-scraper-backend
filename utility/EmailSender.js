@@ -27,7 +27,7 @@ async function SendForgotPasswordEmail(recipient) {
     const emailBody = await constructForgotPasswordBody(recipient);
 
     if (emailBody != null) {
-        return await SendEmail(recipient, 'Reset Password - ShopScraper', emailBody);
+        return await SendEmail(recipient, `Reset Password - ${process.env.COMPANY}`, emailBody);
     } else {
         return null;
     }
@@ -49,7 +49,7 @@ async function SendEmail(recipient, emailSubject, emailBody) {
     })
 
     const mailOptions = {
-        from: "ShopScraper",
+        from: process.env.COMPANY,
         to: recipient,
         subject: emailSubject,
         html: emailBody
@@ -68,7 +68,7 @@ async function SendEmail(recipient, emailSubject, emailBody) {
 
 // ---------------------------- Notification Email Helper Methods ---------------------------------
 function constructNotificationEmailSubject(productData) {
-    return productData.length > 1 ? "SHOP Notification - Products Found!" : "SHOP Notification - Product found";
+    return productData.length > 1 ? `${process.env.COMPANY} Notification - Products Found!` : `${process.env.COMPANY} Notification - Product found`;
 }
 
 function constructNotificationEmailBody(productData) {
@@ -85,7 +85,7 @@ function constructNotificationEmailBody(productData) {
         '<br>' +
         productDataStrings +
         '<br>' +
-        '<p>Products were found by ShopScraper</p>';
+        `<p>Products were found by ${process.env.COMPANY}</p>`;
 
     return emailBody;
 }
