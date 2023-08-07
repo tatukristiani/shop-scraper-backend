@@ -9,7 +9,7 @@ const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET
 
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
-// Product data contain objects -> {title: "title of product", link: "link to product page"}
+// Product data contain objects -> {title: "title of product", link: "link to product page", image: "image src from the site it was retrieved"}
 /**
  * Tries to send an email about products that were found.
  * @param {object[]} productData  - Array of objects containing title (Title of the product), link (Link to the product page) and email to send the information.
@@ -49,18 +49,20 @@ async function SendEmail(recipient, emailSubject, emailBody) {
     })
 
     const mailOptions = {
-        from: process.env.COMPANY,
+        from: `${process.env.COMPANY} <${process.env.EMAIL_SENDER}>`,
         to: recipient,
         subject: emailSubject,
         html: emailBody
     }
 
+    console.log("Mail Options: " + mailOptions.from + ", " + mailOptions.to);
+
     await transport.sendMail(mailOptions)
         .then(result => {
-            console.log(result);
+            console.log("Email send result: " + result.toString());
             return `Email sent to ${recipient}`;
         }).catch(error => {
-            console.log(error);
+            console.log("Error: " + error);
             return `Failed to send email to ${recipient}`;
         });
 }

@@ -38,7 +38,7 @@ async function checkNotificationsFromTori(productNotifications) {
         if (productDataArray.length !== 0) {
             console.log("Watcher found products...");
             await Notification.findByIdAndUpdate(productNotifications[index]._id, { "active": false });
-            EmailSender.SendNotificationEmail(productDataArray, productNotifications[index].email)
+            await EmailSender.SendNotificationEmail(productDataArray, productNotifications[index].email)
                 .then(result => console.log(result))
                 .catch(error => console.log(error));
         }
