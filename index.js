@@ -43,7 +43,7 @@ mongoose.connection.once("open", () => {
         console.log(`Server running on Port: ${PORT}`);
 
         // Every 1 hour tries to find products of all enabled notifications and sends an email if any were found
-        cron.schedule('* 0-23 * * *', () => watcher());
+        cron.schedule('0 0-23 * * *', () => watcher());
 
     })
 });
