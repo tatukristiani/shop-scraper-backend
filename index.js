@@ -43,8 +43,8 @@ mongoose.connection.once("open", () => {
     app.listen(process.env.PORT || PORT, () => {
         console.log(`Server running on Port: ${PORT}`);
 
-        // Every X -> Tries to find products of all enabled notifications and sends an email if found
-        var task = cron.schedule('* */1 * * *', () => watcher());
+        // Every 1 hour tries to find products of all enabled notifications and sends an email if any were found
+        cron.schedule('* */1 * * *', () => watcher());
 
     })
 });
