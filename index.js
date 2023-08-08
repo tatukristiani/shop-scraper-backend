@@ -23,7 +23,18 @@ app.use(express.json());
 
 // Cross Origin Resource Sharing
 //app.use(cors());
-//app.use(cors(corsOptions)); // Cors options declare what origins are allowed.
+/* Allowed origins, localhost + netlify
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:4000',
+    'https://keen-cassata-9a91f3.netlify.app'
+];
+*/
+
+app.use(cors({
+    origin: 'https://keen-cassata-9a91f3.netlify.app',
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+}));
 
 app.use("/", require("./routes/root"));
 
