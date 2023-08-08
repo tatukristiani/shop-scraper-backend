@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConnection");
 const cors = require("cors");
-const corsOptions = require("./config/corsOptions");
 const watcher = require("./watcher/watcher");
 const PORT = 4000;
 
