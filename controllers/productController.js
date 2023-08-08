@@ -1,10 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const allowedOrigins = require("../config/allowedOrigins");
 
 const getProducts = async (req, res) => {
-    res.header("Access-Control-Allow-Origin", allowedOrigins);
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     const query = req.query;
     const product = query.product.toLowerCase();
     const priceOfProduct = query.price;
