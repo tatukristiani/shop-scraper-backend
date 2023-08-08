@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 // Cross Origin Resource Sharing
-app.use(cors());
+//app.use(cors());
 app.use(cors(corsOptions)); // Cors options declare what origins are allowed.
 
 app.use("/", require("./routes/root"));
